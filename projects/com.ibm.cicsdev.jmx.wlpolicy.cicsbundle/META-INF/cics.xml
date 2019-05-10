@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<manifest xmlns="http://www.ibm.com/xmlns/prod/cics/bundle" id="com.ibm.cicsdev.jmx.wlpolicy.cicsbundle" bundleMajorVer="1" bundleMinorVer="0" bundleMicroVer="0" bundleVersion="1" bundleRelease="0" build="IntB-201809142129">
+    <meta_directives>
+        <timestamp>2019-04-08T10:40:19.093+02:00</timestamp>
+    </meta_directives>
+    <define name="START_WLPC" type="http://www.ibm.com/xmlns/prod/cics/bundle/EPADAPTER" path="START_WLPC.epadapter"/>
+    <define name="WLPC" type="http://www.ibm.com/xmlns/prod/cics/bundle/TRANSACTION" path="WLPC.transaction"/>
+    <define name="WLPCTRLW" type="http://www.ibm.com/xmlns/prod/cics/bundle/PROGRAM" path="WLPCTRLW.program"/>
+    <define name="resume_liberty_httpendpoint" type="http://www.ibm.com/xmlns/prod/cics/bundle/POLICY" path="resume_liberty_httpendpoint.policy"/>
+    <define name="com.ibm.cicsdev.jmx.httpendpoint.controller" type="http://www.ibm.com/xmlns/prod/cics/bundle/WARBUNDLE" path="com.ibm.cicsdev.jmx.httpendpoint.controller.warbundle"/>
+</manifest>

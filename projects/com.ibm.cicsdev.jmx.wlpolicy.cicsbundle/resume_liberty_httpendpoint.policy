@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<policy:policy xmlns:policy="http://www.ibm.com/xmlns/prod/cics/managedplatform/policy" policySchemaRelease="2" policySchemaVersion="4">
+  <description>System rule monitoring the RESTAPP bundle enable status. When the RESTAPP bundle is ENABLED, the rule triggers the &quot;START_WLPC&quot; event processing adapter which resume the Liberty server HTTP endpoint.</description>
+  <userTag></userTag>
+  <rule group="SYSTEM" type="bundleEnable">
+    <name>on_bundle_enabled</name>
+    <description>Emit an event to &quot;START_WLPC&quot; EP adatper, when the RESTAPP bundle goes from ANY status to ENABLED status.</description>
+    <bundleEnableCondition>
+      <contextFilter>
+        <TRANSACTION_ID filterOperator="OFF" filterValue=""/>
+        <USER_ID filterOperator="OFF" filterValue=""/>
+      </contextFilter>
+      <bundleEnableFilter>
+        <BUNDLE filterFieldLength="8" filterOperator="EQ" filterValue="RESTAPP" keyword="BUNDLE"/>
+        <BUNDLE_ID filterFieldLength="64" filterOperator="OFF" filterValue="" keyword="BUNDLE_ID"/>
+        <FROM_ENABLESTATUS filterFieldLength="16" filterOperator="OFF" filterValue="ANY" keyword="FROM_ENABLESTATUS"/>
+        <TO_ENABLESTATUS filterFieldLength="16" filterOperator="EQ" filterValue="ENABLED" keyword="TO_ENABLESTATUS"/>
+      </bundleEnableFilter>
+    </bundleEnableCondition>
+    <action>
+      <event>
+        <eventAdapterName>START_WLPC</eventAdapterName>
+        <eventName></eventName>
+        <staticCaptureItem name="operation" value="RESUME"/>
+        <staticCaptureItem name="httpEndpointId" value="defaultHttpEndpoint"/>
+      </event>
+    </action>
+  </rule>
+</policy:policy>

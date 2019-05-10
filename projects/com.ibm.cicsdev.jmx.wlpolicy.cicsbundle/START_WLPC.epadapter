@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:EPAdapter CICSEPSchemaVersion="2" CICSEPSchemaRelease="0" xsi:schemaLocation="http://www.ibm.com/xmlns/prod/cics/eventprocessing/eventbinding CicsEPAdapter.xsd " xmlns:ns2="http://www.ibm.com/xmlns/prod/cics/eventprocessing/eventbinding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <description>Starts the WLPC transaction. Two input parameters are expected: operation (RESUME or PAUSE) and httpEndpointId.</description>
+    <eventDispatcherSpecification>
+        <eventDispatcher>
+            <eventDispatcherPolicy>
+                <dispatchPriority>normal</dispatchPriority>
+                <eventsTransactional>false</eventsTransactional>
+                <adapterUserid useContextUserid="false"></adapterUserid>
+                <adapterTranId></adapterTranId>
+            </eventDispatcherPolicy>
+            <eventDispatcherAdapter>
+                <cicsTransactionAdapter>
+                    <transactionId>WLPC</transactionId>
+                    <sysid></sysid>
+                    <userid useContextUserid="true"></userid>
+                    <format>CCE</format>
+                </cicsTransactionAdapter>
+            </eventDispatcherAdapter>
+        </eventDispatcher>
+    </eventDispatcherSpecification>
+</ns2:EPAdapter>

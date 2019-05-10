@@ -1,0 +1,5 @@
+.dirty
+.apt_generated
+.DS_Store
+build/
+.settings/.jsdtscope
