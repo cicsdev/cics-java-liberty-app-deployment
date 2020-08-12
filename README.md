@@ -18,7 +18,7 @@ This sample provides:
 
 ## Use case
 
-A detailed use case is described in the blog post [Avoiding HTTP outages by managing Liberty HTTP endpoints](https://developer.ibm.com/cics/2019/07/08/avoiding-http-outages/).
+A detailed use case is described in the blog post [Avoiding HTTP outages by managing Liberty HTTP endpoints](https://community.ibm.com/community/user/ibmz-and-linuxone/blogs/philip-wakelin1/2020/08/10/avoiding-http-outages).
 
 ## Requirements
 
