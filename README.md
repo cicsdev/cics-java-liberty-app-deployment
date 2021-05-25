@@ -58,7 +58,7 @@ An existing group that already defines a Liberty JVM server can be used instead 
 
 ### Customize the provided sample
 
-1. Download the sample as a [ZIP](https://github.com/cicsdev/cics-java-liberty-app-deployment/archive/master.zip) or by cloning this repository
+1. Download the sample as a [ZIP](https://github.com/cicsdev/cics-java-liberty-app-deployment/archive/main.zip) or by cloning this repository
 2. Import the two Eclipse [projects](projects) into CICS Explorer
 3. In the `com.ibm.cicsdev.jmx.httpendpoint.controller` web project, fix the Build Path if some libraries cannot be resolved. The Build Path needs to contain the following libraries: Java 8, CICS TS 5.5 with Java EE and Liberty, and the JAR file provided in *WebContent/WEB-INF/lib*
 4. In the `com.ibm.cicsdev.jmx.wlpolicy.cicsbundle` bundle project, open the `resume_liberty_httpendpont.policy` policy
