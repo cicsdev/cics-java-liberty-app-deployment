@@ -86,7 +86,7 @@ public class HttpEndpointController {
 		} catch (ContainerErrorException e) {
 			msg = "Error getting WLPDATA container from channel";
 			e.printStackTrace();
-		} catch (ChannelErrorException | CCSIDErrorException | CodePageErrorException e) {
+		} catch (ChannelErrorException | CCSIDErrorException | CodePageErrorException | LengthErrorException e) {
 			msg = "Error getting data from WLPDATA container";
 			e.printStackTrace();
 		} finally {
