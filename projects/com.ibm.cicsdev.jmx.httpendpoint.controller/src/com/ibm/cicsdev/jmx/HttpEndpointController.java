@@ -83,6 +83,8 @@ public class HttpEndpointController {
 		} catch (MalformedObjectNameException | InstanceNotFoundException | ReflectionException | MBeanException e) {
 			msg = "Error invoking ServerEndpointControl MBean";
 			e.printStackTrace();
+		// if compiled with CICS V5.6 or higher change the following catch to add LengthErrorException
+		// i.e. --> } catch (ContainerErrorException | LengthErrorException e) {
 		} catch (ContainerErrorException e) {
 			msg = "Error getting WLPDATA container from channel";
 			e.printStackTrace();
