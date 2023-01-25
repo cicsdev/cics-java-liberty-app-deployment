@@ -23,14 +23,17 @@ A detailed use case is described in the blog post [Avoiding HTTP outages by mana
 ## Requirements
 
 * CICS TS V5.5
+
   An enhancement was made in [CICS TS V5.5](https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.5.0/whats-new/intro.html#intro__Liberty) so the CICS bundle status now reflects the Liberty application status. This means that a CICS bundle that contains Java EE applications will only reach the `ENABLED` status when all the Java EE applications in the bundle are successfully installed in their Liberty JVM server. Once the bundle is enabled, the Java EE application context root is guaranteed to be available.
 
 * CICS Explorer V5.4.X or later
+
   An enhancement was made in [CICS TS V5.4](https://www.ibm.com/support/knowledgecenter/SSGMCP_5.4.0/whats-new/intro.html#intro__policy-system-rules) and CICS Explorer V5.4 to provide a policy system rule for the CICS bundle enable status.
 
 * A Liberty JVM server installed in CICS
 
 * A web application bundle
+  
   Any web application bundle would work. For instance, one of the following bundles can be used:
   * CICS Hello World - available in CICS Explorer, by creating a new project `Examples > CICS Examples > Java EE and Liberty`
   * <a href="https://github.com/cicsdev/cics-java-liberty-restapp">cics-java-liberty-restapp</a>
@@ -60,7 +63,12 @@ An existing group that already defines a Liberty JVM server can be used instead 
 
 1. Download the sample as a [ZIP](https://github.com/cicsdev/cics-java-liberty-app-deployment/archive/main.zip) or by cloning this repository
 2. Import the two Eclipse [projects](projects) into CICS Explorer
-3. In the `com.ibm.cicsdev.jmx.httpendpoint.controller` web project, fix the Build Path if some libraries cannot be resolved. The Build Path needs to contain the following libraries: Java 8, CICS TS 5.5 with Java EE and Liberty, and the JAR file provided in *WebContent/WEB-INF/lib*
+3. In the `com.ibm.cicsdev.jmx.httpendpoint.controller` web project, fix the Build Path if some libraries cannot be resolved. The Build Path needs to contain the following libraries: 
+   1. Java: Java 8 or Java 11 
+      * **Note**: To use Java 11 in CICS 5.5 and CICS 5.6 you must apply APARs PH47221 and PH47565
+   2. The approriate ***CICS TS v.r with Java EE and Liberty*** library for the the version of CICS being used
+   3. and the JAR file provided in *WebContent/WEB-INF/lib*
+4. If compiling against CICS 5.6 or higher **LengthErrorException** will need to be added to the second catch in method ***controlLiberty*** of class `com.ibm.cicsdev.jmx.httpendpoint.controller`
 4. In the `com.ibm.cicsdev.jmx.wlpolicy.cicsbundle` bundle project, open the `resume_liberty_httpendpont.policy` policy
    1. Modify the bundle name in the `on_bundle_enabled` rule to match the chosen web application bundle whose status is to be monitored by the policy
    2. Modify the static data in the rule action if the HTTP endpoint ID does not match the default name of `defaultHttpEndpoint` used by the Liberty server.
